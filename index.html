@@ -3,14 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="使用原生 HTML、CSS 與 JavaScript 製作的簡易計算機。">
-<title>JavaScript Calculator</title>
+<meta name="description" content="使用原生 HTML、CSS 與 JavaScript 製作的計算機，支援四則運算及多種比例計算。">
+<title>JavaScript Calculator｜比例計算工具</title>
 <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-<main class="calculator" aria-label="JavaScript 計算機">
+<main class="app">
+<section class="calculator" aria-label="JavaScript 計算機">
 <section class="calculator__panel">
 <h1 class="sr-only">JavaScript Calculator</h1>
+<h2 class="section-heading">一般計算機</h2>
 <output id="display" class="display" aria-live="polite" aria-label="計算結果">0</output>
 <div class="keys" aria-label="計算機按鍵">
 <button class="key key--function" type="button" data-action="clear">C</button>
@@ -23,7 +25,91 @@
 <button class="key key--zero" type="button" data-number="0">0</button><button class="key" type="button" data-action="decimal">.</button>
 </div>
 </section>
+</section>
+
+<section class="ratio-section" aria-labelledby="ratio-title">
+<header class="ratio-header">
+<p class="eyebrow">RATIO TOOLS</p>
+<h2 id="ratio-title">比例計算</h2>
+<p>化簡比例、求未知數、換算百分比，或依比例分配數量。</p>
+</header>
+
+<div class="ratio-grid">
+<article class="ratio-card">
+<h3>比例化簡</h3>
+<p class="card-description">將兩個數字化為最簡整數比。</p>
+<form data-ratio-form="simplify">
+<div class="field-row">
+<label>前項<input name="a" type="number" step="any" min="0" placeholder="例如 12" required></label>
+<span class="ratio-colon">:</span>
+<label>後項<input name="b" type="number" step="any" min="0" placeholder="例如 18" required></label>
+</div>
+<button class="calculate-button" type="submit">化簡比例</button>
+<output class="ratio-result" aria-live="polite">結果會顯示在這裡</output>
+</form>
+</article>
+
+<article class="ratio-card">
+<h3>比例求未知數</h3>
+<p class="card-description">已知 A:B = C:X，計算 X。</p>
+<form data-ratio-form="proportion">
+<div class="field-row field-row--three">
+<label>A<input name="a" type="number" step="any" placeholder="A" required></label>
+<span class="ratio-colon">:</span>
+<label>B<input name="b" type="number" step="any" placeholder="B" required></label>
+</div>
+<div class="field-row field-row--three">
+<label>C<input name="c" type="number" step="any" placeholder="C" required></label>
+<span class="ratio-equals">=</span>
+<label>X<input name="x" type="text" value="?" disabled aria-label="待計算的 X"></label>
+</div>
+<button class="calculate-button" type="submit">計算 X</button>
+<output class="ratio-result" aria-live="polite">結果會顯示在這裡</output>
+</form>
+</article>
+
+<article class="ratio-card">
+<h3>比例轉百分比</h3>
+<p class="card-description">計算比例中前項與後項各自佔的百分比。</p>
+<form data-ratio-form="percentage">
+<div class="field-row">
+<label>前項<input name="a" type="number" step="any" min="0" placeholder="例如 2" required></label>
+<span class="ratio-colon">:</span>
+<label>後項<input name="b" type="number" step="any" min="0" placeholder="例如 3" required></label>
+</div>
+<button class="calculate-button" type="submit">換算百分比</button>
+<output class="ratio-result" aria-live="polite">結果會顯示在這裡</output>
+</form>
+</article>
+
+<article class="ratio-card">
+<h3>百分比轉比例</h3>
+<p class="card-description">將百分比換算成「占比 : 剩餘比例」並化簡。</p>
+<form data-ratio-form="percent-to-ratio">
+<label>百分比（0～100）<input name="percent" type="number" step="any" min="0" max="100" placeholder="例如 25" required></label>
+<button class="calculate-button" type="submit">換算比例</button>
+<output class="ratio-result" aria-live="polite">結果會顯示在這裡</output>
+</form>
+</article>
+
+<article class="ratio-card">
+<h3>依比例分配總量</h3>
+<p class="card-description">輸入總量及比例，計算各部分應分配的數量。</p>
+<form data-ratio-form="split">
+<label>總量<input name="total" type="number" step="any" min="0" placeholder="例如 1000" required></label>
+<div class="field-row">
+<label>前項<input name="a" type="number" step="any" min="0" placeholder="例如 2" required></label>
+<span class="ratio-colon">:</span>
+<label>後項<input name="b" type="number" step="any" min="0" placeholder="例如 3" required></label>
+</div>
+<button class="calculate-button" type="submit">計算分配</button>
+<output class="ratio-result" aria-live="polite">結果會顯示在這裡</output>
+</form>
+</article>
+</div>
+</section>
 </main>
 <script src="./js/calculator.js"></script>
+<script src="./js/ratio-calculator.js"></script>
 </body>
 </html>
