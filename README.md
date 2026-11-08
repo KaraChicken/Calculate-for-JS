@@ -39,7 +39,8 @@ Calculate-for-JS/
 │   └── style.css
 ├── js/
 │   ├── calculator.js
-│   └── ratio-calculator.js
+│   ├── ratio-calculator.js
+│   └── percentage-calculator.js
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml
